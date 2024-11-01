@@ -1,0 +1,47 @@
+#  vim:ts=2:sts=2:sw=2:et
+#
+#  Author: Nho Luong
+#  Date: 2023-05-31 01:49:54 +0100 (Wed, 31 May 2023)
+#
+#  https://github.com/nholuongut/packer
+#
+#  License: see accompanying nholuongut LICENSE file
+#
+#  If you're using my code you're welcome to connect with me on LinkedIn and optionally send me feedback to help steer this or other code I publish
+#
+#  https://www.linkedin.com/in/nholuong
+#
+
+# ============================================================================ #
+#                        H a s h i C o r p   P a c k e r
+# ============================================================================ #
+
+---
+name: HashiCorp Packer HCL
+
+on:
+  push:
+    branches:
+      - master
+      - main
+    paths:
+      - '*.pkr.hcl'
+      - .github/workflows/packer.yaml  # this workflow
+
+  pull_request:
+    branches:
+      - master
+      - main
+    paths:
+      - '*.pkr.hcl'
+      - .github/workflows/packer.yaml  # this workflow
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  packer:
+    name: Packer
+    uses: nholuongut/GitHub-Actions/.github/workflows/packer.yaml@master
